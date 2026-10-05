@@ -2,60 +2,129 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex">
-<title>Monday Message</title>
-<meta property="og:title" content="Monday Message">
-<meta property="og:description" content="A fresh week. Here's what to do with it.">
+<title>Monday Message | GLP Shark</title>
+<meta property="og:title" content="Monday Message | GLP Shark">
+<meta property="og:description" content="It's a fresh week. Here's what to do with it.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
 <style>
-  :root { --bg: #0b1220; --card: #131c2e; --text: #f3f6fb; --muted: #a9b4c7; --accent: #37b6ff; }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0; background: var(--bg); color: var(--text);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    line-height: 1.5; -webkit-font-smoothing: antialiased;
-  }
-  main { max-width: 460px; margin: 0 auto; padding: 28px 20px 48px; }
-  .eyebrow { color: var(--accent); font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; text-align: center; margin: 0 0 8px; }
-  h1 { font-size: 30px; line-height: 1.15; text-align: center; margin: 0 0 20px; }
-  .video { position: relative; width: 100%; aspect-ratio: 9 / 16; border-radius: 18px; overflow: hidden; background: #000; box-shadow: 0 12px 40px rgba(0,0,0,.45); }
-  .video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
-  h2 { font-size: 20px; margin: 32px 0 14px; }
-  ol { list-style: none; counter-reset: step; padding: 0; margin: 0; }
-  ol li { counter-increment: step; position: relative; background: var(--card); border-radius: 14px; padding: 16px 16px 16px 58px; margin-bottom: 10px; }
-  ol li::before {
-    content: counter(step); position: absolute; left: 16px; top: 16px;
-    width: 28px; height: 28px; border-radius: 50%; background: var(--accent); color: #06202f;
-    font-weight: 800; font-size: 15px; display: flex; align-items: center; justify-content: center;
-  }
-  ol li strong { display: block; }
-  ol li span { color: var(--muted); font-size: 15px; }
-  .quote { text-align: center; font-size: 19px; font-weight: 700; margin: 30px 0 10px; }
-  .foot { text-align: center; color: var(--muted); font-size: 15px; margin: 0; }
+:root{
+  --ink:#1F2328; --tint:#FFF3EB; --tint-2:#FFE6D6; --deep:#C9471A;
+  --orange:#ec5e2a; --orange-2:#f2782f; --muted:#5E6670; --white:#ffffff;
+}
+*,*::before,*::after{box-sizing:border-box}
+body{
+  margin:0;font-family:"Archivo",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;font-stretch:100%;
+  color:var(--ink);background:var(--white);line-height:1.55;-webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--orange-2);outline-offset:3px;border-radius:4px}
+.wrap{width:100%;max-width:1080px;margin:0 auto;padding:0 20px}
+
+/* header */
+.top{background:var(--white);border-bottom:3px solid var(--orange);padding-top:env(safe-area-inset-top,0px)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:68px}
+.top img{height:40px;width:auto}
+.top a.login{display:inline-flex;align-items:center;white-space:nowrap;text-decoration:none;
+  font-size:15px;font-weight:800;font-stretch:105%;line-height:1.2;color:var(--deep);
+  background:var(--white);border:2px solid var(--orange);border-radius:999px;padding:10px 18px;
+  transition:background .12s ease,color .12s ease}
+.top a.login:hover{background:var(--orange);color:var(--white)}
+@media (max-width:520px){
+  .top img{height:32px}
+  .top a.login{font-size:13px;padding:8px 12px}
+}
+
+/* hero */
+.hero{background:linear-gradient(180deg,var(--tint) 0%,#FFFFFF 100%);padding:48px 0 56px;position:relative;overflow:hidden}
+.hero::after{
+  content:"";position:absolute;right:-120px;top:-80px;width:520px;height:520px;border-radius:50%;
+  background:radial-gradient(circle at 30% 70%,rgba(242,120,47,.28),rgba(242,120,47,0) 62%);pointer-events:none}
+.hero .kicker{font-size:16px;font-weight:700;color:var(--deep);margin:0 0 10px}
+.hero h1{font-stretch:118%;font-weight:850;font-size:clamp(28px,3.3vw,40px);line-height:1.08;letter-spacing:-.01em;margin:0 0 16px}
+.hero .lede{font-size:clamp(17px,2vw,20px);color:#444B53;max-width:58ch;margin:0}
+.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:44px;align-items:center}
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:28px}
+}
+/* the video is vertical (phone-shot), so the frame is 9:16 and kept narrow */
+.video{position:relative;z-index:1;aspect-ratio:9/16;width:100%;max-width:340px;margin:0 auto;background:#0a1f2c;border-radius:14px;overflow:hidden;
+  box-shadow:0 0 0 4px var(--white),0 0 0 6px var(--tint-2),0 30px 60px -24px rgba(236,94,42,.45)}
+.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+/* steps */
+.inside{padding:64px 0 48px}
+.inside h2,.final h2{font-stretch:115%;font-weight:850;font-size:clamp(28px,4vw,42px);line-height:1.08;margin:0 0 12px;letter-spacing:-.01em}
+.inside .sub{color:var(--muted);font-size:18px;margin:0 0 28px;max-width:60ch}
+.inside ul{list-style:none;margin:0;padding:0;max-width:720px}
+.inside li{padding:18px 0 18px 36px;border-top:1px solid #DCE5E9;position:relative;font-size:17px;color:#33454F}
+.inside li::before{content:"";position:absolute;left:0;top:22px;width:18px;height:18px;border-radius:50%;
+  background:radial-gradient(circle,var(--white) 0 3px,var(--orange) 3.5px)}
+.inside li strong{display:block;color:var(--ink);font-size:18px;margin-bottom:2px}
+
+/* closing */
+.final{background:var(--tint);padding:56px 0;text-align:center}
+.final h2{margin:0 auto 12px;max-width:20ch}
+.final p{margin:0;color:#444B53;font-size:17px}
+
+.foot{background:var(--white);color:var(--muted);font-size:13px;text-align:center;padding:20px 20px calc(28px + env(safe-area-inset-bottom,0px))}
+.foot p{margin:0}
+.foot a{color:var(--muted)}
 </style>
 </head>
 <body>
-<main>
-  <p class="eyebrow">Monday Message</p>
-  <h1>It's a fresh week. It's yours for the taking.</h1>
+  <header class="top">
+    <div class="wrap">
+      <img src="https://assets.cdn.filesafe.space/k5tyIG2Q85sUQ1RlSxBo/media/6a57eb201097b811952c0512.png" alt="GLP Shark Marketing System">
+      <a class="login" href="https://go.sharksuite.ai/">Already a user?  LOGIN HERE</a>
+    </div>
+  </header>
 
-  <div class="video">
-    <iframe src="https://player.vimeo.com/video/1233142788?h=0b6a1b6ca3&amp;title=0&amp;byline=0&amp;portrait=0"
-            allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Monday message"></iframe>
-  </div>
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="kicker">Monday Message</p>
+          <h1>It's a fresh week. It's yours for the taking.</h1>
+          <p class="lede">You've got a whole week ahead of you. Here's a quick message on how to make the best of it with your Shark system.</p>
+        </div>
 
-  <h2>Here's what to do this week</h2>
-  <ol>
-    <li><strong>Save your Marketing Links page to your phone.</strong>
-        <span>Put it right on your home screen so your Shark system is one tap away.</span></li>
-    <li><strong>Watch the training in the Generate Leads tab.</strong>
-        <span>It walks you through exactly what to do.</span></li>
-    <li><strong>Take action every day.</strong>
-        <span>Text two people. Post on social media. Contribute to conversations.</span></li>
-  </ol>
+        <div class="video">
+          <iframe src="https://player.vimeo.com/video/1233142788?h=0b6a1b6ca3&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1"
+                  title="Monday message" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <p class="quote">If you work the system, the system will work for you.</p>
-  <p class="foot">Questions? Reach out to us on support.</p>
-</main>
+  <section class="inside">
+    <div class="wrap">
+      <h2>Here's what to do this week</h2>
+      <p class="sub">Three things. Do them and the system does its part.</p>
+      <ul>
+        <li><strong>Save your Marketing Links page to your phone</strong>
+            Put it right on your home screen so your Shark system is one tap away.</li>
+        <li><strong>Watch the training in the Generate Leads tab</strong>
+            It walks you through exactly what to do.</li>
+        <li><strong>Take action every day</strong>
+            Text two people. Post on social media. Contribute to conversations.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="final">
+    <div class="wrap">
+      <h2>If you work the system, the system will work for you.</h2>
+      <p>Questions? Reach out to us on support.</p>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <p>© 2026 Shark Marketing Systems. <a href="https://sharksuite.ai/privacy-policy">Privacy Policy</a> | <a href="https://sharksuite.ai/terms-and-conditions">Terms and Conditions</a></p>
+  </footer>
 </body>
 </html>
